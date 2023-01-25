@@ -9,7 +9,7 @@ router.get("/videos", async (req, res) => {
   const sortBy = req.query.sortBy || "publishedAt";
   const pageNumber = req.query.page || 0;
   try {
-    const totalDocuments = await VideoModel.countDocuments({});
+    const totalDocuments = await VideoModel.estimatedDocumentCount({});
     const hasNext = (+pageNumber + 1) * 10 <= totalDocuments;
     const hasPrev = (+pageNumber + 1) * 10 >= 1;
 
@@ -33,6 +33,8 @@ router.get("/videos", async (req, res) => {
   }
 });
 
+// @Route       : GET "/search"
+// @Description : GET Fuzzy Search the videos over title and description fields
 router.get("/search", async (req, res) => {
   const query = req.query.searchQuery || "cricket";
   try {
@@ -45,13 +47,16 @@ router.get("/search", async (req, res) => {
             path: {
               wildcard: "*",
             },
-            fuzzy: {},
+            fuzzy: {
+              maxEdits: 1,
+              maxExpansions: 100,
+            },
           },
         },
       },
     ]);
 
-    return res.json(results);
+    return res.json({ totalDocuments: results.length, data: results });
   } catch (error) {
     console.log(error.message);
   }

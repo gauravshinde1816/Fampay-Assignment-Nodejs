@@ -28,11 +28,14 @@ const fetchVideos = async (apiKey, q) => {
       thumbnails: {
         default: item.snippet.thumbnails.default,
       },
-      publishedAt: item.snippet.publishedAt
+      publishedAt: item.snippet.publishedAt,
     }));
 
+    // remove existing old records
+    await VideoModel.remove({});
     // save it to the database
     await VideoModel.create(videos);
+    console.log("DATA WRITE : 20 records to DB");
   } catch (err) {
     console.log(err);
   }
