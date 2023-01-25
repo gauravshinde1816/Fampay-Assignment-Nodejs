@@ -23,7 +23,7 @@ app.use("/" , indexRoutes)
 
 
 // cronJobs
-// fetchVideoCronJob()
+fetchVideoCronJob()
 
 
 //listen to PORT

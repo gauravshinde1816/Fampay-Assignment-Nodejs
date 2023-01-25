@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  backend:
+    image: gauravshinde1816/nodejs-mongodb-backend
+    ports:
+      - "5000:5000"
+  frontend:
+    image: gauravshinde1816/reactjs-client
+    ports:
+      - "3000:3000"
