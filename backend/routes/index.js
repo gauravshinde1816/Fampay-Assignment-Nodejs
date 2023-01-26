@@ -5,7 +5,6 @@ const logger = require("../utilities/logger");
 
 // @Route       : GET "/videos"
 // @Description : GET the Videos stored in database
-
 router.get("/videos", async (req, res) => {
   const sortBy = req.query.sortBy || "publishedAt";
   const pageNumber = req.query.page || 0;
