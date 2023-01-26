@@ -63,13 +63,13 @@ Without publishedAfter, it will give you cached results which will be too old
    - Install Dependancies
    - ` npm install`
    - Start server
-   - npm start
+   - `npm start`
 4. Start Frontend
    - ` cd client/`
    - Install Dependancies
    - ` npm install`
    - Start server
-   - npm start
+   - `npm start`
 5. Navigate to `http://localhost:3000` to see the app live
 
 
