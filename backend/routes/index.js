@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const VideoModel = require("../models/video");
+const logger = require("../utilities/logger");
 
 // @Route       : GET "/videos"
 // @Description : GET the Videos stored in database
@@ -29,7 +30,9 @@ router.get("/videos", async (req, res) => {
       hasPrev,
     });
   } catch (error) {
-    console.log(error);
+    logger.error("Internal Server Error")
+    return res.status(500).json({msg:"Internal Server Error"})
+
   }
 });
 
@@ -58,7 +61,8 @@ router.get("/search", async (req, res) => {
 
     return res.json({ totalDocuments: results.length, data: results });
   } catch (error) {
-    console.log(error.message);
+    logger.error("Internal Server Error")
+    return res.status(500).json({msg:"Internal Server Error"})
   }
 });
 

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const config = require("config");
+const logger = require("../utilities/logger");
 const db = config.get("MONGO_URI");
 const connectDB = async () => {
   try {
@@ -7,9 +8,9 @@ const connectDB = async () => {
       useUnifiedTopology: true,
       useNewUrlParser: true,
     });
-    console.log("Database connected");
+    logger.info("Database connected")
   } catch (error) {
-    console.log(error.message);
+    logger.error(error.message)
   }
 };
 

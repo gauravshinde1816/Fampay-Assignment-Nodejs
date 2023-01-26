@@ -1,5 +1,6 @@
 const { google } = require("googleapis");
 const VideoModel = require("../models/video");
+const logger = require("./logger");
 const fetchVideos = async (apiKey, q) => {
   try {
     const service = google.youtube({
@@ -35,9 +36,9 @@ const fetchVideos = async (apiKey, q) => {
     await VideoModel.remove({});
     // save it to the database
     await VideoModel.create(videos);
-    console.log("DATA WRITE : 20 records to DB");
+    logger.info("DATA WRITE : WRITE 20 records to DB")
   } catch (err) {
-    console.log(err);
+    logger.error(err.message)
   }
 };
 

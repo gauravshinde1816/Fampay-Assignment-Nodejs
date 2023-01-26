@@ -2,3 +2,5 @@ node_modules
 npm-debug.log
 Dockerfile
 .dockerignore
+combined.log
+error.log
