@@ -13,9 +13,9 @@ To make an API to fetch latest videos sorted in reverse chronological order of t
    
 ### ✓ Basic Requirements:
 
-✅ Server should call the YouTube API continuously in background (async) with some interval (say 10 seconds) for fetching the latest videos for a predefined search query and should store the data of videos (specifically these fields - Video title, description, publishing datetime, thumbnails URLs and any other fields you require) in a database with proper indexes.
+✅ Server should call the YouTube API continuously in the background (async) with some interval (say 10 seconds) for fetching the latest videos for a predefined search query and should store the data of videos (specifically these fields - Video title, description, publishing datetime, thumbnails URLs and any other fields you require) in a database with proper indexes.
 
-✅ A GET API which returns the stored video data in a paginated response sorted in descending order of published datetime.
+✅ A GET API that returns the stored video data in a paginated response sorted in descending order of published datetime.
 
 ✅ It should be scalable and optimized.
 
